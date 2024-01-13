@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Montserrat, sans-serif;
+}
+
+html {
+  background: #e9ebee;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 10dvh;
+  padding: 2rem 0;
+}
