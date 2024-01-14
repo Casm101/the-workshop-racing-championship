@@ -182,7 +182,6 @@ export default function Home() {
       <div className="page-header">
         <div className="content">
           <h1>2024 Driver Standings</h1>
-          <p>Hello there</p>
         </div>
       </div>
       <Table
