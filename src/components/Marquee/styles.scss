@@ -1,0 +1,23 @@
+.marquee-container {
+    width: 100%;
+    background: #39435e;
+    padding: .5rem 0;
+}
+
+.styled-marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+
+    animation: scroll 20s linear infinite;
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}

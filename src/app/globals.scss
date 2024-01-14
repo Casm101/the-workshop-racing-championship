@@ -14,7 +14,52 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  ;
 
   margin-top: 10dvh;
-  padding: 2rem 0;
+  padding: 4rem 0;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 800px;
+    max-width: 100%;
+  }
+}
+
+.page-header {
+  padding: 1rem;
+
+  h1 {
+    width: 100%;
+
+    font-size: 2.25rem;
+    font-weight: 600;
+    text-align: left;
+
+    color: #1f2a46;
+  }
+
+  h2 {
+    width: 100%;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+
+    color: #1f2a46;
+  }
+
+  p {
+    width: 100%;
+    padding-top: .5rem;
+    line-height: 1.5rem;
+    color: #323952
+  }
+}
+
+.spacer {
+  height: 2rem;
 }

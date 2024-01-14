@@ -5,12 +5,7 @@ import './styles.scss';
 // Table props
 interface TableProps {
     header: string[];
-    body: {
-        name: string,
-        surname: string,
-        nationality: string,
-        points: number
-    }[];
+    body: React.ReactNode;
 }
 
 // Header component declaration
@@ -26,14 +21,7 @@ export const Table = ({ header, body }: TableProps) => {
                 ))}
             </thead>
             <tbody>
-                {body.map((driver, idx) => (
-                    <tr key={idx}>
-                        <td>{idx + 1}</td>
-                        <td>{driver.surname.split(' ')[0]}</td>
-                        <td>{driver.nationality}</td>
-                        <td>{driver.points}</td>
-                    </tr>
-                ))}
+                {body}
             </tbody>
         </table>
     );
