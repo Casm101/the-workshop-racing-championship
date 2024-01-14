@@ -20,7 +20,9 @@ export const Header = ({ logo, notification }: HeaderProps) => {
                 <Marquee text={notification} />
             }
             <div className="header-content">
-                <img className="logo" src={logo} alt="The Workshop Racing Championship" />
+                <a href="/">
+                    <img className="logo" src={logo} alt="The Workshop Racing Championship" />
+                </a>
 
                 <div className="link-list">
                     <a href="/driver-standings">Driver Standings</a>

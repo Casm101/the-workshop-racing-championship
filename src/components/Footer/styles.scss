@@ -20,27 +20,12 @@
         padding: 0 4rem;
 
         .logo {
-            color: #fff;
+            width: 70%;
         }
 
-        .link-list {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-
-            a {
-                color: #fff;
-                text-decoration: none;
-
-                font-size: 1.2rem;
-                font-weight: 600;
-
-                transition: .2s;
-
-                &:hover {
-                    color: lightgrey;
-                }
-            }
+        .text {
+            font-size: small;
+            color: #caced3;
         }
     }
 }

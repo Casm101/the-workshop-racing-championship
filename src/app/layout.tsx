@@ -22,7 +22,9 @@ export default function RootLayout({ children }: LayoutProps) {
           {children}
         </div>
       </body>
-      <Footer />
+      <Footer
+        logo="/logo.svg"
+      />
     </html>
   );
 };

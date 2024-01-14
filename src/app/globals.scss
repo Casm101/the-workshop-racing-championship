@@ -30,6 +30,7 @@ html {
 }
 
 .page-header {
+  width: 100%;
   padding: 1rem;
 
   h1 {
@@ -62,4 +63,8 @@ html {
 
 .spacer {
   height: 2rem;
+
+  &.small {
+    height: 1rem;
+  }
 }
