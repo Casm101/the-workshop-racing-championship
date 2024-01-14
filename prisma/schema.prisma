@@ -22,6 +22,7 @@ model Driver {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now())
   deletedAt     DateTime
+  Result        Result[]
 }
 
 // Constructor table
@@ -33,4 +34,34 @@ model Team {
   deletedAt DateTime?
 
   Driver Driver[]
+}
+
+// Campionship table
+model Championship {
+  id   String @id @default(cuid())
+  year String
+
+  Race Race[]
+}
+
+// Race table
+model Race {
+  id             String       @id @default(cuid())
+  name           String
+  location       String
+  date           DateTime
+  championship   Championship @relation(fields: [championshipId], references: [id])
+  championshipId String
+  Result         Result[]
+}
+
+// Result table
+model Result {
+  id       String @id @default(cuid())
+  position Int?
+  points   Int
+  raceId   String
+  race     Race   @relation(fields: [raceId], references: [id])
+  driverId String
+  driver   Driver @relation(fields: [driverId], references: [id])
 }
