@@ -17,7 +17,6 @@ const getData = async () => {
       Result: true
     }
   });
-  console.log(drivers);
   return { drivers };
 };
 
