@@ -6,13 +6,14 @@ import { PrismaClient } from "@prisma/client";
 
 // Util imports
 import { countryCodes } from "../../../utils/countryCodes";
+import { FormEvent } from "react";
 
 
+// Prisma declaration
+const prisma = new PrismaClient();
+
+// Retrieve data server side
 const getData = async () => {
-
-  // Prisma declaration
-  const prisma = new PrismaClient();
-
   const teams = await prisma.team.findMany();
   return { teams };
 };
@@ -23,6 +24,15 @@ export default async function DriverCreatePage() {
 
   // Page variables
   const teams = (await getData()).teams;
+
+  // Handle form submit
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    'use server'
+
+    const formData: any = Object.fromEntries(e as unknown as Iterable<readonly [PropertyKey, any]>) satisfies typeof formData;
+    const driver = await prisma.driver.create({ data: formData });
+    console.log(driver);
+  };
 
   return (
     <>
@@ -37,7 +47,7 @@ export default async function DriverCreatePage() {
 
       {/* Create driver form */}
       <div>
-        <form action="/api/v1/drivers" method="POST">
+        <form action={onSubmit as unknown as string}>
           <input type="text" name="name" />
           <input type="text" name="surname" />
           <input type="text" name="mattermostTag" />
