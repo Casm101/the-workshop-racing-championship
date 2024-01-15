@@ -1,30 +1,28 @@
+// Module imports
+import { PrismaClient } from "@prisma/client";
+
 // Component imports
 import { Table } from "../../components";
 
+// Declare prisma
+const prisma = new PrismaClient();
 
-// Page variable declarations
-const tableHeader = ['pos', 'team', 'pts'];
-const sampleTeams = [
-  {
-    name: 'Design',
-    points: 20
-  },
-  {
-    name: 'Games Co.',
-    points: 20
-  },
-  {
-    name: 'MSP',
-    points: 20
-  },
-  {
-    name: 'Core Tech',
-    points: 20
-  }
-];
+
+// Retrieve server side data
+const getData = async () => {
+  const teams = await prisma.team.findMany();
+  return { teams };
+};
+
 
 // Home page declaration
-export default function Home() {
+export default async function Home() {
+
+  // Page variable declarations
+  const tableHeader = ['pos', 'team', 'pts'];
+
+  // Get server data
+  const teams = (await getData()).teams;
 
   return (
     <>
@@ -36,11 +34,11 @@ export default function Home() {
       <Table
         header={tableHeader}
         body={
-          sampleTeams.map((team, idx) => (
+          teams.map((team, idx) => (
             <tr key={idx}>
               <td>{idx + 1}</td>
               <td className="thin">{team.name}</td>
-              <td>{team.points}</td>
+              <td>{0}</td>
             </tr>
           ))
         }
@@ -48,3 +46,7 @@ export default function Home() {
     </>
   );
 };
+
+
+// Force page to be serverside rendered
+export const dynamic = 'force-dynamic';

@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 // Util imports
 import { countryCodes } from "../../../utils/countryCodes";
 import { FormEvent } from "react";
+import { redirect } from "next/navigation";
 
 
 // Prisma declaration
@@ -30,8 +31,14 @@ export default async function DriverCreatePage() {
     'use server'
 
     const formData: any = Object.fromEntries(e as unknown as Iterable<readonly [PropertyKey, any]>) satisfies typeof formData;
-    const driver = await prisma.driver.create({ data: formData });
-    console.log(driver);
+
+    try {
+      await prisma.driver.create({ data: formData });
+    } catch (err) {
+
+    }
+
+    redirect('/driver-standings');
   };
 
   return (
@@ -47,17 +54,17 @@ export default async function DriverCreatePage() {
 
       {/* Create driver form */}
       <div>
-        <form action={onSubmit as unknown as string}>
-          <input type="text" name="name" />
-          <input type="text" name="surname" />
-          <input type="text" name="mattermostTag" />
-          <select name="nationality" defaultValue="-">
+        <form className="general-form" action={onSubmit as unknown as string}>
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="text" name="surname" placeholder="Surname" required />
+          <input type="text" name="mattermostTag" placeholder="Mattermost tag" required />
+          <select name="nationality" defaultValue="-" required>
             <option value="-" disabled>Select nationality</option>
             {countryCodes.map((country, idx) => (
               <option value={country.alpha3} key={idx}>{country.name}</option>
             ))}
           </select>
-          <select name="teamId" defaultValue="-">
+          <select name="teamId" defaultValue="-" required>
             <option value="-" disabled>Select team</option>
             {teams.map((team, idx) => (
               <option value={team.id} key={idx}>{team.name.toUpperCase()}</option>

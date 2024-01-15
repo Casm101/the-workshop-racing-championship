@@ -1,181 +1,35 @@
+// Module imports
+import { PrismaClient } from "@prisma/client";
+
 // Component imports
 import { Table } from "../../components";
 
+// Declare prisma
+const prisma = new PrismaClient();
 
-// Page variable declarations
-const tableHeader = ['pos', 'driver', 'nationality', 'team', 'pts'];
-const sampleDrivers = [
-  {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  },
-  {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  },
-  {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  }, {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  },
-  {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  },
-  {
-    name: 'Laurent',
-    surname: 'Spitaels',
-    nationality: 'BEL',
-    team: 'MSP',
-    points: 50
-  },
-  {
-    name: 'Amit',
-    surname: 'Kumar',
-    nationality: 'GER',
-    team: 'Core Tech',
-    points: 40
-  },
-  {
-    name: 'Ernesto',
-    surname: 'Sin',
-    nationality: 'MEX',
-    team: 'Design',
-    points: 30
-  },
-  {
-    name: 'Christian',
-    surname: 'Smith Mantas',
-    nationality: 'GBR / ESP',
-    team: 'Games Co.',
-    points: 20
-  }
-];
+
+// Retrieve server side data
+const getData = async () => {
+
+  const drivers = await prisma.driver.findMany({
+    include: {
+      team: true,
+      Result: true
+    }
+  });
+  console.log(drivers);
+  return { drivers };
+};
+
 
 // Home page declaration
-export default function Home() {
+export default async function Home() {
+
+  // Page variable declarations
+  const tableHeader = ['pos', 'driver', 'nationality', 'team', 'pts'];
+
+  // Get server data
+  const drivers = (await getData()).drivers;
 
   return (
     <>
@@ -187,13 +41,13 @@ export default function Home() {
       <Table
         header={tableHeader}
         body={
-          sampleDrivers.map((driver, idx) => (
+          drivers.map((driver, idx) => (
             <tr key={idx}>
               <td>{idx + 1}</td>
-              <td>{driver.surname.split(' ')[0]}</td>
+              <td>{driver.mattermostTag}</td>
               <td>{driver.nationality}</td>
-              <td className='thin'>{driver.team}</td>
-              <td>{driver.points}</td>
+              <td className='thin'>{driver.team?.name}</td>
+              <td>{0}</td>
             </tr>
           ))
         }
@@ -201,3 +55,7 @@ export default function Home() {
     </>
   );
 };
+
+
+// Force page to be serverside rendered
+export const dynamic = 'force-dynamic';
