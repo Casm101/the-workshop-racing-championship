@@ -17,8 +17,8 @@ model Driver {
   surname       String
   mattermostTag String   @unique
   nationality   String
-  team          Team     @relation(fields: [teamId], references: [id])
-  teamId        String
+  teamId        String?
+  team          Team?    @relation(fields: [teamId], references: [id])
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now())
   deletedAt     DateTime
@@ -40,7 +40,7 @@ model Team {
 // Campionship table
 model Championship {
   id   String @id @default(cuid())
-  year String
+  year Int
 
   Race Race[]
 }
@@ -51,8 +51,8 @@ model Race {
   name           String       @unique
   location       String
   date           DateTime
-  championship   Championship @relation(fields: [championshipId], references: [id])
   championshipId String
+  championship   Championship @relation(fields: [championshipId], references: [id], onDelete: Cascade)
 
   Result Result[]
 }
@@ -66,7 +66,7 @@ model Result {
   averageLap Int?
   points     Int
   raceId     String
-  race       Race   @relation(fields: [raceId], references: [id])
+  race       Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
   driverId   String
-  driver     Driver @relation(fields: [driverId], references: [id])
+  driver     Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
 }
