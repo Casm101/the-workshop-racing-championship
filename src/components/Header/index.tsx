@@ -1,6 +1,8 @@
+'use client'
 /* eslint-disable @next/next/no-img-element */
 
 // Style imports
+import { useState } from 'react';
 import { Marquee } from '..';
 import './styles.scss';
 
@@ -14,25 +16,43 @@ interface HeaderProps {
 // Header component declaration
 export const Header = ({ logo, notification }: HeaderProps) => {
 
-  return (
-    <header className="header-styled">
-      {notification &&
-        <Marquee text={notification} />
-      }
-      <div className="header-content">
-        <a href="/">
-          <img className="logo" src={logo} alt="The Workshop Racing Championship" />
-        </a>
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const sidebarClass = isSidebarOpen ? 'open' : null;
+  const sidebarIcon = isSidebarOpen ? '/close.svg' : '/menu.svg';
 
-        <div className="link-list">
-          <a href="/driver-standings">Driver Standings</a>
-          <a href="/constructor-standings">Constructor Standings</a>
-          <a href="/point-system">Point System</a>
-          <a href="/driver/sign-up">
-            <img src="/user-plus.svg" alt="Driver sign-up image" />
+
+  return (
+    <>
+      <header className="header-styled">
+        {notification &&
+          <Marquee text={notification} />
+        }
+        <div className="header-content">
+          <a href="/">
+            <img className="logo" src={logo} alt="The Workshop Racing Championship" />
           </a>
+
+          <div className='sidebar-button' onClick={() => setSidebarOpen(prev => !prev)}>
+            <img src={sidebarIcon} alt="Sidebar icon" />
+          </div>
+
+          <div className="link-list">
+            <a href="/driver-standings">Driver Standings</a>
+            <a href="/drivers">Drivers</a>
+            <a href="/point-system">Point System</a>
+            <a href="/driver/sign-up">
+              <img src="/user-plus.svg" alt="Driver sign-up image" />
+            </a>
+          </div>
         </div>
+      </header>
+
+      <div className={["sidebar", sidebarClass].join(' ')}>
+        <a href="/driver-standings">Driver Standings</a>
+        <a href="/drivers">Drivers</a>
+        <a href="/point-system">Point System</a>
+        <a href="/driver/sign-up">Sign up</a>
       </div>
-    </header>
+    </>
   );
 };

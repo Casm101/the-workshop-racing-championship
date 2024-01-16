@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
+
+.driver-styled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 260px;
+
+  border-top: 2px solid #1d243c;
+  border-right: 2px solid #1d243c;
+  border-top-right-radius: .5rem;
+
+  .driver-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    width: 100%;
+    padding: 0 1rem 0 .5rem;
+
+    .team-color {
+      height: 1.8rem;
+      width: .25rem;
+      background: red;
+    }
+
+    .driver-name {
+      color: #1d243c;
+
+      .name {
+        font-size: .8rem;
+      }
+
+      .surname {
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+    }
+
+    .spacer {
+      flex-grow: 1;
+    }
+  }
+
+  hr {
+    width: 95%;
+  }
+
+  .driver-info {
+    display: flex;
+    align-items: center;
+    height: 10rem;
+
+    width: 100%;
+    padding: .5rem 0 0 .5rem;
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      height: 100%;
+      width: 30%;
+
+      .team {
+        font-weight: 300;
+        color: #7d7d81;
+      }
+
+      .points {
+        font-family: 'Moirai One', system-ui;
+        font-size: 4rem;
+      }
+    }
+
+    .portrait {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+
+      img {
+        width: 85%;
+      }
+    }
+  }
+}

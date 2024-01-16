@@ -26,7 +26,7 @@ html {
     flex-direction: column;
     align-items: center;
 
-    width: 800px;
+    width: 850px;
     max-width: 100%;
   }
 }
@@ -110,4 +110,14 @@ button {
   &:focus {
     background: #2f3e69;
   }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  column-gap: 1rem;
+  row-gap: 2rem;
+
+  width: 100%;
 }
