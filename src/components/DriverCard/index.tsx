@@ -6,7 +6,7 @@ import './styles.scss';
 import Image from 'next/image';
 
 // DriverCard props
-interface DriverCardProps extends Driver {
+export interface DriverCardProps extends Driver {
   team: Team
 }
 

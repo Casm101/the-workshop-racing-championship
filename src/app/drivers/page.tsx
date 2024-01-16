@@ -1,5 +1,5 @@
 // Module imports
-import { DriverCard } from "@/components";
+import { DriverCard, DriverCardProps } from "@/components";
 import { PrismaClient } from "@prisma/client";
 
 // Component imports
@@ -39,7 +39,7 @@ export default async function Home() {
       </div>
       <div className="grid">
         {drivers.map((driver, idx) => (
-          <DriverCard {...driver} key={idx} />
+          <DriverCard {...driver as DriverCardProps} key={idx} />
         ))}
       </div>
     </>
