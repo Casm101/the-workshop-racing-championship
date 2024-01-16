@@ -12,6 +12,9 @@ const prisma = new PrismaClient();
 const getData = async () => {
 
   const drivers = await prisma.driver.findMany({
+    orderBy: {
+      surname: "asc"
+    },
     include: {
       team: true
     }

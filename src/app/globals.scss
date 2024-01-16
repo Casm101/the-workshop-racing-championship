@@ -110,6 +110,10 @@ button {
   &:focus {
     background: #2f3e69;
   }
+
+  &:active {
+    background: #00cac1;
+  }
 }
 
 .grid {

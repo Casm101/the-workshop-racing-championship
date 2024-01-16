@@ -37,10 +37,10 @@ export const Header = ({ logo, notification }: HeaderProps) => {
           </div>
 
           <div className="link-list">
-            <a href="/driver-standings">Driver Standings</a>
+            <a href="/standings">Standings</a>
             <a href="/drivers">Drivers</a>
             <a href="/point-system">Point System</a>
-            <a href="/driver/sign-up">
+            <a href="/drivers/sign-up">
               <img src="/user-plus.svg" alt="Driver sign-up image" />
             </a>
           </div>
@@ -48,10 +48,10 @@ export const Header = ({ logo, notification }: HeaderProps) => {
       </header>
 
       <div className={["sidebar", sidebarClass].join(' ')}>
-        <a href="/driver-standings">Driver Standings</a>
+        <a href="/standings">Standings</a>
         <a href="/drivers">Drivers</a>
         <a href="/point-system">Point System</a>
-        <a href="/driver/sign-up">Sign up</a>
+        <a href="/drivers/sign-up">Sign up</a>
       </div>
     </>
   );
