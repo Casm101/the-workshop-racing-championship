@@ -1,6 +1,9 @@
 // Prisma type
 import { Driver, Team } from '@prisma/client';
 
+// Util imports
+import { findCountry } from '@/utils/countryCodes';
+
 // Style imports
 import './styles.scss';
 import Image from 'next/image';
@@ -25,7 +28,7 @@ export const DriverCard = ({ name, surname, nationality, team }: DriverCardProps
         <div className="spacer"></div>
         <div className="flag">
           <Image
-            src={`https://flagsapi.com/${nationality.slice(0, 2)}/flat/64.png`}
+            src={`https://flagsapi.com/${findCountry(nationality)?.alpha2}/flat/64.png`}
             alt={`${nationality} country flag`}
             width={48}
             height={48}

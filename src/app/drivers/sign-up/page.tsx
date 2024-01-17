@@ -44,7 +44,7 @@ export default async function DriverCreatePage() {
   return (
     <>
       {/* Driver page header */}
-      <div className="page-header">
+      <div className="page-header centered">
         <div className="content">
           <h1>Create new driver</h1>
         </div>

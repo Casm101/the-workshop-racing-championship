@@ -61,6 +61,15 @@ html {
     line-height: 1.5rem;
     color: #323952
   }
+
+  &.centered {
+
+    h1,
+    h2,
+    p {
+      text-align: center;
+    }
+  }
 }
 
 .spacer {
