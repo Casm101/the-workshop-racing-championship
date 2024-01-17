@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
+
+.countdown-styled {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
+  padding: 1rem;
+
+  color: #fff;
+  background: #1d243c;
+
+  .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #fff;
+    width: 7rem;
+    height: 7rem;
+    aspect-ratio: 1 / 1;
+
+    .number {
+      font-family: 'Moirai One', system-ui;
+      font-size: 3rem;
+    }
+
+    .text {
+      text-transform: uppercase;
+    }
+  }
+
+  .today {
+    font-family: 'Moirai One', system-ui;
+    text-transform: uppercase;
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .countdown-styled {
+
+    .timer {
+      width: 5rem;
+      height: 5rem;
+
+      .number {
+        font-size: 2rem;
+      }
+
+      .text {
+        font-size: .8rem;
+      }
+    }
+
+    .today {
+      font-size: 2rem;
+    }
+  }
+}
