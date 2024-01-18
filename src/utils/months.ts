@@ -1,7 +1,7 @@
 export const monthsShort = [
   'Jan',
   'Feb',
-  'March',
+  'Mar',
   'Apr',
   'May',
   'Jun',
