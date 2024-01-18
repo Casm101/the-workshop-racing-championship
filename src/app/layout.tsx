@@ -1,15 +1,23 @@
+// Module imports
+import { cookies } from 'next/headers';
+
 // Component imports
 import { Header, Footer } from '../components';
 
 // Style imports
 import './globals.scss';
 
+
+// Declare cookie store
+const cookieStore = cookies();
+
+
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 // Main layout declaration
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
 
   return (
     <html lang="en">

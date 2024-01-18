@@ -16,6 +16,7 @@ interface HeaderProps {
 // Header component declaration
 export const Header = ({ logo, notification }: HeaderProps) => {
 
+  // Sidebar variables
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const sidebarClass = isSidebarOpen ? 'open' : null;
   const sidebarIcon = isSidebarOpen ? '/close.svg' : '/menu.svg';
