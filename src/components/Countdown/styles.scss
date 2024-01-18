@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
-
 .countdown-styled {
   display: flex;
   align-items: center;
@@ -23,7 +21,7 @@
     aspect-ratio: 1 / 1;
 
     .number {
-      font-family: 'Moirai One', system-ui;
+      font-family: 'Moirai One';
       font-size: 3rem;
     }
 
@@ -33,7 +31,7 @@
   }
 
   .today {
-    font-family: 'Moirai One', system-ui;
+    font-family: 'Moirai One';
     text-transform: uppercase;
     font-size: 3rem;
   }
