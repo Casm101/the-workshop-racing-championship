@@ -8,10 +8,6 @@ import { Header, Footer } from '../components';
 import './globals.scss';
 
 
-// Declare cookie store
-const cookieStore = cookies();
-
-
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -19,7 +15,7 @@ interface LayoutProps {
 // Main layout declaration
 export default async function RootLayout({ children }: LayoutProps) {
 
-  const userSession = cookieStore.get('session');
+  const userSession = cookies().get('session');
 
   return (
     <html lang="en">
