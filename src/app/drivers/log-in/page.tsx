@@ -3,6 +3,7 @@
 
 // Module imports
 import { PrismaClient } from "@prisma/client";
+import { cookies } from "next/headers";
 
 // Util imports
 import { FormEvent } from "react";
@@ -29,13 +30,15 @@ export default async function DriverCreatePage() {
         }
       });
 
-      console.log(driver);
+      driver && cookies().set('session', driver?.mattermostTag);
 
     } catch (err) {
 
+      throw new Error('failed to login');
+
     }
 
-    // redirect('/driver-standings');
+    redirect('/drivers/profile');
   };
 
   return (

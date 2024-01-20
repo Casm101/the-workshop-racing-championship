@@ -19,6 +19,8 @@ interface LayoutProps {
 // Main layout declaration
 export default async function RootLayout({ children }: LayoutProps) {
 
+  const userSession = cookieStore.get('session');
+
   return (
     <html lang="en">
       <head>
@@ -28,6 +30,7 @@ export default async function RootLayout({ children }: LayoutProps) {
       <Header
         logo="/logo.svg"
         notification='2024 inaugural race on the 27th of January, stay tuned for our racing results!'
+        session={userSession}
       />
       <body className="app-body">
         <div className="content">

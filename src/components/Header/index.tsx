@@ -11,10 +11,11 @@ import './styles.scss';
 interface HeaderProps {
   logo: string;
   notification?: string;
+  session?: object;
 }
 
 // Header component declaration
-export const Header = ({ logo, notification }: HeaderProps) => {
+export const Header = ({ logo, notification, session }: HeaderProps) => {
 
   // Sidebar variables
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -42,9 +43,15 @@ export const Header = ({ logo, notification }: HeaderProps) => {
             <a href="/drivers">Drivers</a>
             <a href="/races">Races</a>
             <a href="/point-system">Point System</a>
-            <a href="/drivers/sign-up">
-              <img src="/user-plus.svg" alt="Driver sign-up image" />
-            </a>
+            {session ?
+              <a href="/drivers/profile">
+                <img src="/user.svg" alt="User icon" />
+              </a>
+              :
+              <a href="/drivers/sign-up">
+                <img src="/login.svg" alt="Driver sign-up image" />
+              </a>
+            }
           </div>
         </div>
       </header>
@@ -54,7 +61,11 @@ export const Header = ({ logo, notification }: HeaderProps) => {
         <a href="/drivers">Drivers</a>
         <a href="/races">Races</a>
         <a href="/point-system">Point System</a>
-        <a href="/drivers/sign-up">Sign up</a>
+        {session ?
+          <a href="/drivers/profile">Profile</a>
+          :
+          <a href="/drivers/sign-up">Sign up</a>
+        }
       </div>
     </>
   );
