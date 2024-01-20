@@ -71,7 +71,7 @@ export default async function DriverCreatePage() {
             ))}
           </select>
           <button type="submit">Create driver</button>
-          <button type="submit">Log in</button>
+          <a href="/drivers/log-in" className="link-button">Login</a>
         </form>
       </div>
     </>
