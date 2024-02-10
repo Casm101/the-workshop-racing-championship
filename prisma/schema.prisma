@@ -59,14 +59,14 @@ model Race {
 
 // Result table
 model Result {
-  id         String @id @default(cuid())
+  id         String  @id @default(cuid())
   position   Int?
   laps       Int?
-  fastestlap Int?
-  averageLap Int?
+  fastestlap String?
+  averageLap String?
   points     Int
   raceId     String
-  race       Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  race       Race    @relation(fields: [raceId], references: [id], onDelete: Cascade)
   driverId   String
-  driver     Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  driver     Driver  @relation(fields: [driverId], references: [id], onDelete: Cascade)
 }

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Result" ALTER COLUMN "averageLap" SET DATA TYPE TEXT,
+ALTER COLUMN "fastestlap" SET DATA TYPE TEXT;
