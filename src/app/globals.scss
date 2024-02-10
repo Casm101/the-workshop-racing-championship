@@ -131,6 +131,10 @@ button,
   &:active {
     background: #00cac1;
   }
+
+  &.invisible {
+    display: none;
+  }
 }
 
 .grid {
